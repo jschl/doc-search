@@ -2,13 +2,21 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     </head>
 
     <body>
         <font size="6">search engine</font>
 
         <form action="/search/results" method="post">
-            <input type="text" name="input" placeholder="search" autofocus>
+
+            <div class="box">
+                <div class="container-1">
+                    <span class="icon"><i class="fa fa-search"></i></span>
+                    <input type="search" name="input" id="search" placeholder="Search..." />
+                </div>
+            </div>
+            
             <button type="submit">go</button>
         </form>
 
