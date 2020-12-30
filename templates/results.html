@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <font size="6">search engine</font>
+
+        <form action="/search/results" method="post">
+            <input type="text" name="input" placeholder="search" autofocus>
+            <button type="submit">go</button>
+        </form>
+
+        <br/><h3>{{ res['hits']['total']['value'] }} results found for <em>"{{res['ST']}}"</em></h3>
+        <br/>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>File Name</th>
+                    <th>Preview</th> 
+                    <th>Score</th>
+                </tr>
+            </thead>
+
+            {% for hit in res['hits']['hits'] %}
+
+            <tbody>
+                <tr>
+                    <td><a href="{{ hit['_source']['file']['url'] }}">{{ hit['_source']['file']['filename'] }}</a></td>
+                    <td id="{{loop.index}}" name="preview"> {{ hit['preview']}} </td> 
+                    <td>{{ hit['_score'] }}</td>
+                </tr>
+            </tbody>
+
+            {% endfor %}
+        </table>
+</body>
+</html>
